@@ -10,9 +10,41 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-        VStack {
-            Text("Hello, world!")
+        VStack{
+            Text("Calculate the atmospheric pressure!")
                 .padding()
+            Text("Temperature at which water begins to boil:")
+                .padding()
+            
+            Slider(value: .constant(50.0),
+                   in: 0.0...100.0,
+                   label: {
+                        Text("Opacity")
+            },
+                   minimumValueLabel: {
+                        Text("0")
+            },
+                   maximumValueLabel: {
+                        Text("100")
+            })
+                .padding()
+            
+            
+            Text("50")
+            
+            Button(action: {
+
+                print("Button was pressed")
+            }, label: {
+                Text("Calculate")
+            })
+            .buttonStyle(.bordered)
+            .padding()
+            
+            Text("The Atmospheric Pressure is...")
+            Text("You are above sea level")
+
+            Spacer()
         }
         
         .navigationTitle("Boiling Water")
