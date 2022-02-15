@@ -11,7 +11,7 @@ struct ContentView: View {
     
     //MARK: Stored Properties
     
-    var temperatureInCelcius = 0.0
+    @State var temperatureInCelcius = 0.0
     
     //MARK: Computed Properties
     
@@ -27,21 +27,24 @@ struct ContentView: View {
             Text("Temperature at which water begins to boil:")
                 .padding()
             
-            Slider(value: .constant(50.0),
-                   in: 0.0...100.0,
+            Slider(value: $temperatureInCelcius,
+                   in: 80.0...200.0,
+                   step: 0.1,
                    label: {
                         Text("Opacity")
             },
                    minimumValueLabel: {
-                        Text("0")
+                        Text("80")
             },
                    maximumValueLabel: {
-                        Text("100")
+                        Text("200")
             })
                 .padding()
             
-            
-            Text("50")
+            //Review this please: String Interpolation
+            Text("\(String(format: "%.1f", temperatureInCelcius)) °C")
+                .bold()
+                .padding()
             
             Button(action: {
 
@@ -52,7 +55,8 @@ struct ContentView: View {
             .buttonStyle(.bordered)
             .padding()
             
-            Text("The Atmospheric Pressure is...")
+            Text("The Atmospheric Pressure is \(String(format: "%.1f", atmosphericPressure)) kPa")
+            
             Text("You are above sea level")
 
             Spacer()
