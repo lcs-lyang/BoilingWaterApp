@@ -19,6 +19,16 @@ struct ContentView: View {
         return (temperatureInCelcius * 5) - 400
     }
     
+    var feedback: String{
+        if atmosphericPressure > 100 {
+            return "You are above sea level🌊⬆️"
+        } else if atmosphericPressure == 100 {
+            return "You are at sea level🏞"
+        } else {
+            return "You are under sea level🌊⬇"
+        }
+    }
+    
     var body: some View {
         
         VStack{
@@ -48,16 +58,17 @@ struct ContentView: View {
             
             Button(action: {
 
-                print("Button was pressed")
+               
             }, label: {
                 Text("Calculate")
             })
             .buttonStyle(.bordered)
             .padding()
             
+            
             Text("The Atmospheric Pressure is \(String(format: "%.1f", atmosphericPressure)) kPa")
             
-            Text("You are above sea level")
+            Text("\(feedback)")
 
             Spacer()
         }
