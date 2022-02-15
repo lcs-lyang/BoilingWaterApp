@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    //MARK: Stored Properties
+    
+    var temperatureInCelcius = 0.0
+    
+    //MARK: Computed Properties
+    
+    var atmosphericPressure: Double{
+        return (temperatureInCelcius * 5) - 400
+    }
+    
     var body: some View {
         
         VStack{
